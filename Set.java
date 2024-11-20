@@ -16,6 +16,7 @@ public class Set {
 
         set1.addAll(set);
         System.out.println(set1);
+        system.out.println("Set");
     }
 
 }
