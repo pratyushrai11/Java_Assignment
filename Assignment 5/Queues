@@ -1,0 +1,94 @@
+interface QueueOperations {
+    void insert(int value) throws Exception;
+    void delete() throws Exception;
+    void display();
+}
+
+class QueueDemo implements QueueOperations {
+    private int[] queueArray;
+    private int frontIndex, rearIndex, currentSize;
+    private static final int MAX_CAPACITY = 10;
+
+    public QueueDemo() {
+        queueArray = new int[MAX_CAPACITY];
+        frontIndex = -1;
+        rearIndex = -1;
+        currentSize = 0;
+    }
+
+    @Override
+    public void insert(int value) throws Exception {
+        if (currentSize == MAX_CAPACITY) {
+            throw new Exception("Queue Overflow! Cannot insert more elements.");
+        }
+        if (rearIndex == MAX_CAPACITY - 1) {
+            rearIndex = -1;
+        }
+        queueArray[++rearIndex] = value;
+        currentSize++;
+        System.out.println(value + " has been inserted into the queue.");
+    }
+
+    @Override
+    public void delete() throws Exception {
+        if (currentSize == 0) {
+            throw new Exception("Queue Underflow! No elements to delete.");
+        }
+        int deletedValue = queueArray[frontIndex + 1];
+        if (frontIndex == MAX_CAPACITY - 1) {
+            frontIndex = -1;
+        }
+        frontIndex++;
+        currentSize--;
+        System.out.println(deletedValue + " has been deleted from the queue.");
+    }
+
+    @Override
+    public void display() {
+        if (currentSize == 0) {
+            System.out.println("Queue is empty.");
+            return;
+        }
+        System.out.print("Current queue: ");
+        for (int i = frontIndex + 1; i <= rearIndex; i++) {
+            System.out.print(queueArray[i] + " ");
+        }
+        System.out.println();
+    }
+}
+
+public class QueueTest {
+    public static void main(String[] args) {
+        QueueDemo queue = new QueueDemo();
+
+        try {
+
+            queue.insert(5);
+            queue.insert(10);
+            queue.insert(15);
+            queue.insert(20);
+            queue.insert(25);
+
+            queue.display();
+
+            queue.delete();
+            queue.delete();
+
+            queue.display();
+
+            queue.insert(30);
+            queue.insert(35);
+
+            queue.display();
+
+            queue.delete();
+            queue.delete();
+            queue.delete();
+            queue.delete();
+            queue.delete();
+            queue.delete();
+        } catch (Exception e) {
+            System.out.println("Exception: " + e.getMessage());
+        }
+    }
+}
