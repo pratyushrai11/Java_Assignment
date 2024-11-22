@@ -1,0 +1,47 @@
+class Teacher {
+    String teacherName;
+    String teachingSubject;
+    int yearsOfExperience;
+
+    Teacher(String teacherName, String teachingSubject, int yearsOfExperience) {
+        this.teacherName = teacherName;
+        this.teachingSubject = teachingSubject;
+        this.yearsOfExperience = yearsOfExperience;
+    }
+
+    void displayTeacherDetails() {
+        System.out.println("Teacher Details");
+        System.out.println("Name: " + this.teacherName);
+        System.out.println("Major: " + this.teachingSubject);
+        System.out.println("Experience: " + this.yearsOfExperience + " years");
+    }
+}
+
+class Student extends Teacher {
+    int studentRollNumber;
+    String studentGrade;
+
+    public Student(String teacherName, String teachingSubject, int yearsOfExperience, int studentRollNumber, String studentGrade) {
+        super(teacherName, teachingSubject, yearsOfExperience);
+        this.studentRollNumber = studentRollNumber;
+        this.studentGrade = studentGrade;
+    }
+
+    public void displayStudentDetails() {
+        System.out.println("Student Roll Number: " + studentRollNumber);
+        System.out.println("Grade: " + studentGrade);
+    }
+}
+
+public class Details {
+    public static void main(String[] args) {
+        Student student = new Student("Virat Kohli", "Maths", 18, 160, "A");
+
+        System.out.println("Teacher Details:");
+        student.displayTeacherDetails();
+
+        System.out.println("\nStudent Details:");
+        student.displayStudentDetails();
+    }
+}
+
