@@ -1,0 +1,68 @@
+abstract class Car {
+    String carBrand;
+
+    Car(String carBrand) {
+        this.carBrand = carBrand;
+    }
+
+    void displayBrand() {
+        System.out.println("Brand: " + this.carBrand);
+    }
+
+    abstract void displayAverage();
+    abstract void displayModel();
+}
+
+class Maruti extends Car {
+    int carMileage;
+    String carModel;
+
+    Maruti(int carMileage, String carModel) {
+        super("Maruti");
+        this.carMileage = carMileage;
+        this.carModel = carModel;
+    }
+
+    void displayAverage() {
+        System.out.println("This Car of Maruti gives an average of " + this.carMileage + " km/hr");
+    }
+
+    void displayModel() {
+        System.out.println("Maruti: " + this.carModel);
+    }
+}
+
+class Santro extends Car {
+    int carMileage;
+    String carModel;
+
+    Santro(int carMileage, String carModel) {
+        super("Santro");
+        this.carMileage = carMileage;
+        this.carModel = carModel;
+    }
+
+    void displayAverage() {
+        System.out.println("This Car of Santro gives an average of " + this.carMileage + " km/hr");
+    }
+
+    void displayModel() {
+        System.out.println("Santro: " + this.carModel);
+    }
+}
+
+class Car1 { }
+
+public class CarTransportation {
+    public static void main(String[] args) {
+        Car marutiCar = new Maruti(30, "800");
+        marutiCar.displayBrand();
+        marutiCar.displayModel();
+        marutiCar.displayAverage();
+
+        Car santroCar = new Santro(27, "120");
+        santroCar.displayBrand();
+        santroCar.displayModel();
+        santroCar.displayAverage();
+    }
+}
