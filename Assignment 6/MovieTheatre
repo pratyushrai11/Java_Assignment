@@ -1,0 +1,32 @@
+import java.util.*;
+
+class MovieTheatre {
+    double ticketPrice = 5.0;         // Per ticket price in dollars
+    double fixedPerformanceCost = 20.0; // Fixed cost per performance in dollars
+    double costPerAttendee = 0.50;   // Cost incurred per attendee in dollars
+    int attendeeCount;              // Total number of attendees
+
+    MovieTheatre(int attendeeCount) {
+        this.attendeeCount = attendeeCount;
+    }
+
+    double calculateProfit() {
+        double totalGrossIncome = attendeeCount * ticketPrice; // Gross income calculation
+        double totalCost = attendeeCount * costPerAttendee + fixedPerformanceCost; // Total cost calculation
+        return totalGrossIncome - totalCost; // Net profit
+    }
+}
+
+public class CostOfTicket {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of attendees in the theatre for the show: ");
+        int totalAttendees = scanner.nextInt();
+
+        MovieTheatre theatre = new MovieTheatre(totalAttendees);
+
+        double netProfit = theatre.calculateProfit();
+        System.out.println("Total Net Profit made by the theatre is $" + netProfit);
+    }
+}
