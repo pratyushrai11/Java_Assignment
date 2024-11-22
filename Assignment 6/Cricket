@@ -1,0 +1,67 @@
+class Player {
+    String playerName;
+    int playerAge;
+
+    Player(String playerName, int playerAge) {
+        this.playerName = playerName;
+        this.playerAge = playerAge;
+    }
+
+    void displayPlayerInfo() {
+        System.out.println("Player Info");
+        System.out.println("Name: " + this.playerName);
+        System.out.println("Age: " + this.playerAge);
+    }
+}
+
+class Batsman extends Player {
+    int totalRunsScored;
+    int totalInningsPlayed;
+
+    Batsman(String playerName, int playerAge, int totalRunsScored, int totalInningsPlayed) {
+        super(playerName, playerAge);
+        this.totalRunsScored = totalRunsScored;
+        this.totalInningsPlayed = totalInningsPlayed;
+    }
+
+    void displayPlayerInfo() {
+        System.out.println("Batsman Info");
+        System.out.println("Name: " + this.playerName);
+        System.out.println("Age: " + this.playerAge);
+        System.out.println("Runs Scored: " + this.totalRunsScored);
+        System.out.println("Innings Played: " + this.totalInningsPlayed);
+    }
+}
+
+class Bowler extends Player {
+    int totalMatchesPlayed;
+    int totalWicketsTaken;
+
+    Bowler(String playerName, int playerAge, int totalMatchesPlayed, int totalWicketsTaken) {
+        super(playerName, playerAge);
+        this.totalMatchesPlayed = totalMatchesPlayed;
+        this.totalWicketsTaken = totalWicketsTaken;
+    }
+
+    void displayPlayerInfo() {
+        System.out.println("Bowler Info");
+        System.out.println("Name: " + this.playerName);
+        System.out.println("Age: " + this.playerAge);
+        System.out.println("Wickets Taken: " + this.totalWicketsTaken);
+        System.out.println("Matches Played: " + this.totalMatchesPlayed);
+    }
+}
+
+public class Crickets {
+    public static void main(String[] args) {
+        Player genericPlayer = new Player("Jhonty Rhodes", 46);
+        Batsman rohit = new Batsman("Rohit Sharma", 37, 10866, 265);
+        Bowler arshdeep = new Bowler("Arshdeep Singh", 25, 6, 10);
+
+        genericPlayer.displayPlayerInfo();
+        System.out.println();
+        rohit.displayPlayerInfo();
+        System.out.println();
+        arshdeep.displayPlayerInfo();
+    }
+}
