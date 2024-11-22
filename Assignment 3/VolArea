@@ -1,0 +1,136 @@
+import java.util.*;
+
+abstract class figure {
+    double pi = 3.1420;
+    double area;
+    double volume;
+    double radius;
+
+    public abstract void calcArea();
+
+    public abstract void calcVol();
+
+    public abstract void dispArea();
+
+    public abstract void dispVol();
+}
+
+class cone extends figure {
+    double height;
+    double slantHeight;
+
+    cone(double height, double slantHeight, double radius) {
+        this.height = height;
+        this.slantHeight = slantHeight;
+        this.radius = radius;
+    }
+
+    public void calcArea() {
+        this.area = this.pi * this.radius * (this.radius + this.slantHeight);
+    }
+
+    public void calcVol() {
+        this.volume = this.pi * (this.radius) * (this.radius) * (this.height) * (0.33);
+    }
+
+    public void dispArea() {
+        System.out.println("Area: " + this.area);
+    }
+
+    public void dispVol() {
+        System.out.println("Volume: " + this.volume);
+    }
+}
+
+class Sphere extends figure {
+    Sphere(double radius) {
+        this.radius = radius;
+    }
+
+    public void calcArea() {
+        this.area = 4 * this.pi * this.radius * this.radius;
+    }
+
+    public void calcVol() {
+        this.volume = (1.33) * this.pi * this.radius * this.radius * this.radius;
+    }
+
+    public void dispArea() {
+        System.out.println("Area: " + this.area);
+    }
+
+    public void dispVol() {
+        System.out.println("Volume: " + this.volume);
+    }
+}
+
+class Cylinder extends figure {
+    double height;
+
+    Cylinder(double height, double radius) {
+        this.height = height;
+        this.radius = radius;
+    }
+
+    public void calcArea() {
+        this.area = 2 * this.pi * this.radius * this.height;
+    }
+
+    public void calcVol() {
+        this.volume = this.pi * this.radius * this.radius * this.height;
+    }
+
+    public void dispArea() {
+        System.out.println("Area: " + this.area);
+    }
+
+    public void dispVol() {
+        System.out.println("Volume: " + this.volume);
+    }
+}
+
+public class VolArea {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("For Cone: ");
+        System.out.print("Enter radius of cone: ");
+        double coneRadius = scanner.nextDouble();
+        System.out.print("Enter height of cone: ");
+        double coneHeight = scanner.nextDouble();
+        System.out.print("Enter slant height of cone: ");
+        double coneSlantHeight = scanner.nextDouble();
+        cone cone1 = new cone(coneHeight, coneSlantHeight, coneRadius);
+
+        System.out.println("For Sphere: ");
+        System.out.print("Enter radius of sphere: ");
+        double sphereRadius = scanner.nextDouble();
+        Sphere sphere = new Sphere(sphereRadius);
+
+        System.out.println("For Cylinder: ");
+        System.out.print("Enter radius of cylinder: ");
+        double cylinderRadius = scanner.nextDouble();
+        System.out.print("Enter height of cylinder: ");
+        double cylinderHeight = scanner.nextDouble();
+        Cylinder cylinder = new Cylinder(cylinderHeight, cylinderRadius);
+
+        System.out.println("SPHERE: ");
+        sphere.calcArea();
+        sphere.calcVol();
+        sphere.dispArea();
+        sphere.dispVol();
+
+        System.out.println("CYLINDER: ");
+        cylinder.calcArea();
+        cylinder.calcVol();
+        cylinder.dispArea();
+        cylinder.dispVol();
+
+        System.out.println("CONE: ");
+        cone1.calcArea();
+        cone1.calcVol();
+        cone1.dispArea();
+        cone1.dispVol();
+    }
+}
