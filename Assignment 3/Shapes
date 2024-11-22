@@ -1,0 +1,48 @@
+import java.util.*;
+
+abstract class Figure {
+    double radius;
+    double area;
+    double volume;
+
+    public abstract void dispArea();
+
+    public abstract void dispVolume();
+}
+
+class Cone extends Figure {
+    double height;
+    double radius;
+    double slantHeight;
+
+    Cone(double height, double radius, double slantHeight) {
+        super();
+        this.height = height;
+        this.radius = radius;
+        this.slantHeight = slantHeight;
+    }
+
+    public void dispArea() {
+        System.out.println("Area of Cone: " + Math.PI * this.radius * (this.radius + this.slantHeight));
+    }
+
+    public void dispVolume() {
+        System.out.println("Volume of Cone: " + Math.PI * this.radius * this.radius * this.height * (0.33));
+    }
+}
+
+public class Shapes {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter radius: ");
+        double radius = scanner.nextDouble();
+        System.out.print("Enter height: ");
+        double height = scanner.nextDouble();
+        System.out.print("Enter slant height: ");
+        double slantHeight = scanner.nextDouble();
+
+        Cone cone = new Cone(height, radius, slantHeight);
+        cone.dispArea();
+        cone.dispVolume();
+    }
+}
