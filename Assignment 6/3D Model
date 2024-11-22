@@ -1,0 +1,54 @@
+import java.util.*;
+public class Model {
+    private int coordX, coordY, coordZ;
+
+    public Model() {
+        this.coordX = 0;
+        this.coordY = 0;
+        this.coordZ = 0;
+    }
+
+    public Model(int coordX, int coordY, int coordZ) {
+        this.coordX = coordX;
+        this.coordY = coordY;
+        this.coordZ = coordZ;
+    }
+
+    public void inputCoordinates() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter x-coordinate: ");
+        this.coordX = scanner.nextInt();
+        System.out.print("Enter y-coordinate: ");
+        this.coordY = scanner.nextInt();
+        System.out.print("Enter z-coordinate: ");
+        this.coordZ = scanner.nextInt();
+    }
+
+    public void displayCoordinates() {
+        System.out.println("3D Point: (" + coordX + ", " + coordY + ", " + coordZ + ")");
+    }
+
+    public double computeDistance(Model other) {
+        return Math.sqrt(Math.pow(this.coordX - other.coordX, 2) +
+                Math.pow(this.coordY - other.coordY, 2) +
+                Math.pow(this.coordZ - other.coordZ, 2));
+    }
+
+    public static void main(String[] args) {
+        Model origin = new Model();
+        System.out.println("Origin:");
+        origin.displayCoordinates();
+
+        Model arbitraryPoint = new Model(3, 4, 5);
+        System.out.println("Arbitrary Point:");
+        arbitraryPoint.displayCoordinates();
+
+        Model userPoint = new Model();
+        System.out.println("Input coordinates for a new point:");
+        userPoint.inputCoordinates();
+        userPoint.displayCoordinates();
+
+        double distance = arbitraryPoint.computeDistance(userPoint);
+        System.out.println("Distance between Arbitrary Point and User Point: " + distance);
+    }
+}
